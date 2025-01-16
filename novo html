@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Simples</title>
+</head>
+<body>
+
+    <h2>Formulário de Contato</h2>
+    
+    <form id="contactForm">
+        <label for="name">Nome:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="email">E-mail:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="message">Mensagem:</label><br>
+        <textarea id="message" name="message" required></textarea><br><br>
+        
+        <button type="submit">Enviar</button>
+    </form>
+
+    <p id="responseMessage"></p>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Impede o envio do formulário para validar os campos
+
+            // Obter os valores dos campos
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var message = document.getElementById("message").value;
+
+            // Verificar se todos os campos estão preenchidos
+            if (name === "" || email === "" || message === "") {
+                document.getElementById("responseMessage").textContent = "Por favor, preencha todos os campos.";
+                document.getElementById("responseMessage").style.color = "red";
+            } else {
+                document.getElementById("responseMessage").textContent = "Formulário enviado com sucesso!";
+                document.getElementById("responseMessage").style.color = "green";
+                document.getElementById("contactForm").reset(); // Limpar o formulário
+            }
+        });
+    </script>
+
+</body>
+</html>
